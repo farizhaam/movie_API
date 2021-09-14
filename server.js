@@ -33,7 +33,7 @@ http.createServer((request, response) => {
 
         response.writeHead(200, {'Content-Type': 'text/plain'});//adds header to the response along with HTTP status code 200 for 'OK'
         response.write(data);//writes the data content
-        response.end();// ends the response
+        response.end('Hello Node!\n');// ends the response
     });
 
 }).listen(8080);//listens for a response on Port 8080
