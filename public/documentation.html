@@ -5,16 +5,123 @@
         <meta name="viewport" content="width=device-width">
         <title>MooVieS API</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-        <!-- <link href="dist/min.css" rel="stylesheet" type="text/css" /> -->
+        <link href="styles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <header>
 
         </header>
         <main>
-            <h1 class="display-4 text-center">Documentation</h1>
-            <!-- pokemon list container-->
-            <ul class='list-group list-unstyled'></ul>
+            <h1 class="display-4 text-center">MooVieS API Documentation</h1>
+            
+            <!-- <ul class='list-group list-unstyled'></ul> -->
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Request</th>
+                        <th scope="col">URL</th>
+                        <th scope="col">HTTP Method</th>
+                        <th scope="col">Request data format</th>
+                        <th scope="col">Response data format</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Get a list of all movies</td>
+                        <td>/movies</td>
+                        <td>GET</td>
+                        <td>None</td>
+                        <td>A JSON object holding data about all the movies</td>
+                    </tr>
+                    <tr>
+                        <td>Get data about a single movie by title</td>
+                        <td>/movies/[Title]</td>
+                        <td>GET</td>
+                        <td>None</td>
+                        <td>A JSON holding data about a single movie, <br>
+                            Example:<br>
+                            <p>
+                                {<br>
+                                    <span class="indent">"id": objectId,</span><br>
+                                    <span class="indent">"title": "Movie Name",</span><br>
+                                    <span class="indent">"year": "2018",</span><br>
+                                    <span class="indent">"genre": </span><br>
+                                    <span class="double-indent">"name": "Comedy",</span><br>
+                                    <span class="double-indent">"description": "Description of Comedy genre.",</span><br>
+                                    <span class="indent">"description": "Movie description",</span><br>
+                                    <span class="indent">"actors": [ "Actor 1", "Actor 2"],</span><br>
+                                    <span class="indent">"director: "</span><br>
+                                    <span class="double-indent">"name": "Director's Name"</span><br>
+                                    <span class="double-indent">"yob": "1978"</span><br>
+                                    <span class="double-indent">"location": "Director's base country"</span><br>
+                                    <span class="indent">"imageUrl": "www.link.to/movie/coverartwork"</span><br>
+                                }
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Get a list of all movie directors</td>
+                        <td>/directors</td>
+                        <td>GET</td>
+                        <td>None</td>
+                        <td>A JSON object holding data about all the movie directors</td>
+                    </tr>
+                    <tr>
+                        <td>Get data about a single movie director by name</td>
+                        <td>/directors/[Name]</td>
+                        <td>GET</td>
+                        <td> Specify director name in URL. The query is case sensitive.</td>
+                        <td>A JSON object holding data about a single movie director,<br>
+                            Example:<br>
+                            <p>
+                                {<br>
+                                    <span class="indent">"name": "Director's name"</span><br>
+                                    <span class="indent">"yob": "1978"</span><br>
+                                    <span class="indent">"location": "Director's base country"</span><br>
+                                }
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Allow new users to register</td>
+                        <td>/users</td>
+                        <td>POST</td>
+                        <td>A JSON object holding data about the new user to add,<br> 
+                            structure like this:
+                            <p>
+                                {<br>
+                                    <span class="indent">"name": "Anna Volker",</span><br>
+                                    <span class="indent">"dob": "19.08.2001",</span><br>
+                                    <span class="indent">"username": "username1",</span><br>
+                                    <span class="indent">"email": "annavoelker@mail.com",</span><br>
+                                    <span class="indent">"password": "qwert1234",</span><br>
+                                }
+                            </p>
+
+                        </td>
+                        <td>A JSON object holding data about the user that was added, including an ID: 
+                            <p>
+                                {<br>
+                                    <span class="indent">"name": "Anna Volker",</span><br>
+                                    <span class="indent">"dob": "19.08.2001",</span><br>
+                                    <span class="indent">"username": "username1",</span><br>
+                                    <span class="indent">"email": "annavoelker@mail.com",</span><br>
+                                    <span class="indent">"password": "qwert1234",</span><br>
+                                    <span class="indent">"id": "0000wer-nju78-09lok",</span><br>
+                                }
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Allow users to update user info by name</td>
+                        <td>/users/[Name]/[Username]</td>
+                        <td>PUT</td>
+                        <td>None</td>
+                        <td>A verification message that a new username was succesfully assigned or failed.</td>
+                    </tr>
+
+                </tbody>
+            </table>
 
             <!-- loading image container-->
             <div id="loading">
