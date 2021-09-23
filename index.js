@@ -1,7 +1,13 @@
-const express = require('express'),
-    morgan = require('morgan');
+
+const express = require('express');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const uuid = require('uuid');
 
 const app = express();
+
+app.use(bodyParser.json());
+
 
 let movies = [
     {
@@ -47,18 +53,67 @@ let movies = [
     }
 ];
 
+let users = [
+    {
+        id : 1,
+        name: 'Anna Volker',
+        dob : '19.08.2001',
+        username: 'username1',
+        email: 'annavoelker@mail.com',
+        password: 'qwert1234'
+    }
+];
 
 app.use(morgan('common'));
 
 
-
+//Welcome page
 app.get('/', (req, res) => {
     res.send('Welcome to MooVieS!');
 });
 
-
+// Gets the list of data about ALL movies
 app.get('/movies', (req, res) => {
-    res.JSON(movies);
+    res.json(movies);
+});
+
+//Gets the data about a single movie by title
+app.get('/movies/:title', (req, res) => {
+    res.json(movies.find((movie) => {
+        return movie.title === req.params.title
+    }));
+});
+
+//Gets the list of all users
+app.get('/users', (req, res) => {
+    res.json(users);
+});
+
+//Adds data for a new user to the list of users
+app.post('/users', (req,res) => {
+    let newUser = req.body;
+
+    if (!newUser.name) {
+        const message = 'Missing name in request body';
+        res.status(400).send(message);
+    } else {
+        newUser.id = uuid.v4();
+        users.push(newUser);
+        res.status(201).send(newUser);
+    }
+});
+
+//Update the user info (username) of a user by name
+app.put('/users/:name/:username', (req, res) => {
+    let user = users.find((user) => { return user.name === req.params.name });
+
+    if (user) {
+        user.username = req.params.username;
+        res.status(201).send('User ' + req.params.name + ' has changed the username into ' + 
+        req.params.username);
+    } else {
+        res.status(404).send('User with the name ' + req.params.name + ' was not found.');
+    }
 });
 
 //exposing files in 'public' folder
