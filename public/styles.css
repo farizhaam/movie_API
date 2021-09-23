@@ -1,0 +1,12 @@
+p {
+    color:lightseagreen;
+    font-size:small;
+}
+
+.indent {
+    margin-left: 20px;
+}
+
+.double-indent {
+    margin-left: 40px;
+}
