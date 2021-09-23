@@ -84,6 +84,26 @@ app.get('/movies/:title', (req, res) => {
     }));
 });
 
+//Gets a list of all genres
+app.get('/genres', (req, res) => {
+    res.send('Successful GET request returning data on all movie genres');
+});
+
+//Gets the data of a single movie genre
+app.get('/genres/:name', (req, res) => {
+    res.send('Successful GET request returning data on a single movie genre by name');
+});
+
+//Gets a list of all movie directors
+app.get('/directors', (req, res) => {
+    res.send('Successful GET request returning data on all movie directors');
+});
+
+//Gets the data of a single movie director
+app.get('/directors/:name', (req, res) => {
+    res.send('Successful GET request returning data on a single movie director by name');
+});
+
 //Gets the list of all users
 app.get('/users', (req, res) => {
     res.json(users);
@@ -116,11 +136,6 @@ app.put('/users/:name/:username', (req, res) => {
     }
 });
 
-//Allows existing users to de-register
-app.delete('/users', (req,res) => {
-    res.send('Successful DELETE request deleting selected user data');
-});
-
 //Allows users to add a movie to favorite list
 app.post('/users/:name/movies/:movie_id', (req,res) => {
     res.send('Successful POST request adding a movie to favorite list');
@@ -129,6 +144,11 @@ app.post('/users/:name/movies/:movie_id', (req,res) => {
 //Allows users to add a movie to favorite list
 app.delete('/users/:name/movies/:movie_id', (req,res) => {
     res.send('Successful DELETE request removing a movie from favorite list');
+});
+
+//Allows existing users to de-register
+app.delete('/users', (req,res) => {
+    res.send('Successful DELETE request deleting selected user data');
 });
 
 //exposing files in 'public' folder
