@@ -116,6 +116,21 @@ app.put('/users/:name/:username', (req, res) => {
     }
 });
 
+//Allows existing users to de-register
+app.delete('/users', (req,res) => {
+    res.send('Successful DELETE request deleting selected user data');
+});
+
+//Allows users to add a movie to favorite list
+app.post('/users/:name/movies/:movie_id', (req,res) => {
+    res.send('Successful POST request adding a movie to favorite list');
+});
+
+//Allows users to add a movie to favorite list
+app.delete('/users/:name/movies/:movie_id', (req,res) => {
+    res.send('Successful DELETE request removing a movie from favorite list');
+});
+
 //exposing files in 'public' folder
 app.use(express.static('public'));
 
