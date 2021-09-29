@@ -1,69 +1,26 @@
-
+//importing required modules
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
 
+//importing models from models.js
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+
+const Movies = Models.Movie;
+const Users = Models.User;
+
+mongoose.connect('mongodb://localhost:27017/MooVieS_DB', {useNewUrlParser: true, useUnifiedTopology: true});
+
+//calling express
 const app = express();
 
+//activating body-parser
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
-
-let movies = [
-    {
-        title: 'Movie A',
-        director: 'Director B',
-        genre: 'Genre 1'
-    },{
-        title: 'Movie B',
-        director: 'Director D',
-        genre: 'Genre 5'
-    },{
-        title: 'Movie C',
-        director: 'Director A',
-        genre: 'Genre 2'
-    },{
-        title: 'Movie D',
-        director: 'Director B',
-        genre: 'Genre 4'
-    },{
-        title: 'Movie E',
-        director: 'Director C',
-        genre: 'Genre 2'
-    },{
-        title: 'Movie F',
-        director: 'Director B',
-        genre: 'Genre 3'
-    },{
-        title: 'Movie G',
-        director: 'Director B',
-        genre: 'Genre 1'
-    },{
-        title: 'Movie H',
-        director: 'Director J',
-        genre: 'Genre 4'
-    },{
-        title: 'Movie I',
-        director: 'Director G',
-        genre: 'Genre 5'
-    },{
-        title: 'Movie J',
-        director: 'Director A',
-        genre: 'Genre 4'
-    }
-];
-
-let users = [
-    {
-        id : 1,
-        name: 'Anna Volker',
-        dob : '19.08.2001',
-        username: 'username1',
-        email: 'annavoelker@mail.com',
-        password: 'qwert1234'
-    }
-];
-
+//activating morgan
 app.use(morgan('common'));
 
 
