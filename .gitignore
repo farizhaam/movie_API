@@ -2,3 +2,5 @@ node_modules/
 movies.js
 queries.txt
 users.js
+director.js
+genres.js
