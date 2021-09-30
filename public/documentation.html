@@ -42,19 +42,42 @@
                             Example:<br>
                             <p>
                                 {<br>
-                                    <span class="indent">"id": objectId,</span><br>
-                                    <span class="indent">"title": "Movie Name",</span><br>
-                                    <span class="indent">"year": "2018",</span><br>
-                                    <span class="indent">"genre": </span><br>
-                                    <span class="double-indent">"name": "Comedy",</span><br>
-                                    <span class="double-indent">"description": "Description of Comedy genre.",</span><br>
-                                    <span class="indent">"description": "Movie description",</span><br>
-                                    <span class="indent">"actors": [ "Actor 1", "Actor 2"],</span><br>
-                                    <span class="indent">"director: "</span><br>
-                                    <span class="double-indent">"name": "Director's Name"</span><br>
-                                    <span class="double-indent">"yob": "1978"</span><br>
-                                    <span class="double-indent">"location": "Director's base country"</span><br>
-                                    <span class="indent">"imageUrl": "www.link.to/movie/coverartwork"</span><br>
+                                    <span class="indent">"Genre": </span><br>
+                                    <span class="double-indent">"Name": "Genre's name",</span><br>
+                                    <span class="double-indent">"Description": "Description of the genre.",</span><br>
+                                    <span class="indent">"Director: "</span><br>
+                                    <span class="double-indent">"Name": "Director's Name",</span><br>
+                                    <span class="double-indent">"Bio": "Director's biography",</span><br>
+                                    <span class="double-indent">"Birthyear": "YYYY",</span><br>
+                                    <span class="double-indent">"Deathyear": "YYYY",</span><br>
+                                    <span class="indent">"_id": objectId,</span><br>
+                                    <span class="indent">"Title": "Movie Name",</span><br>
+                                    <span class="indent">"Description": "Movie description",</span><br>
+                                    <span class="indent">"Actors": ["Actor 1", "Actor 2"],</span><br>
+                                    <span class="indent">"imageUrl": "www.link.to/movie/coverartwork",</span><br>
+                                    <span class="indent">"Featured": Boolean</span><br>
+                                }
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Get a list of all genres</td>
+                        <td>/genres</td>
+                        <td>GET</td>
+                        <td>None</td>
+                        <td>A JSON object holding data about all the movie genres</td>
+                    </tr>
+                    <tr>
+                        <td>Get data about a movie genre by name</td>
+                        <td>/genres/[Name]</td>
+                        <td>GET</td>
+                        <td> Specify genre name in URL. The query is case sensitive.</td>
+                        <td>A JSON object holding data about a single movie director,<br>
+                            Example:<br>
+                            <p>
+                                {<br>
+                                    <span class="indent">"Name": "Genre's name",</span><br>
+                                    <span class="indent">"Description": "Description of the selected genre..."</span><br>
                                 }
                             </p>
                         </td>
@@ -66,6 +89,7 @@
                         <td>None</td>
                         <td>A JSON object holding data about all the movie directors</td>
                     </tr>
+
                     <tr>
                         <td>Get data about a single movie director by name</td>
                         <td>/directors/[Name]</td>
@@ -75,9 +99,38 @@
                             Example:<br>
                             <p>
                                 {<br>
-                                    <span class="indent">"name": "Director's name"</span><br>
-                                    <span class="indent">"yob": "1978"</span><br>
-                                    <span class="indent">"location": "Director's base country"</span><br>
+                                    <span class="indent">"_id": objectId,</span><br>
+                                    <span class="double-indent">"Name": "Director's Name",</span><br>
+                                    <span class="double-indent">"Bio": "Director's biography",</span><br>
+                                    <span class="double-indent">"Birthyear": "YYYY",</span><br>
+                                    <span class="double-indent">"Deathyear": "YYYY"</span><br>
+                                }
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Get a list of all users</td>
+                        <td>/users</td>
+                        <td>GET</td>
+                        <td>None</td>
+                        <td>A JSON object holding data about all the registered users</td>
+                    </tr>
+                    <tr>
+                        <td>Get data about a user by name</td>
+                        <td>/users/[Name]</td>
+                        <td>GET</td>
+                        <td> Specify director name in URL. The query is case sensitive.</td>
+                        <td>A JSON object holding data about a single user,<br>
+                            Example:<br>
+                            <p>
+                                {<br>
+                                    <span class="indent">"_id": objectId,</span><br>
+                                    <span class="indent">"Name": "Firstname Lastname",</span><br>
+                                    <span class="indent">"Username": "Username",</span><br>
+                                    <span class="indent">"Password": "Password",</span><br>
+                                    <span class="indent">"Email": "example@mail.com",</span><br>
+                                    <span class="indent">"Birthday": "YYYY-mm-dd",</span><br>
+                                    <span class="indent">"FavoritesMovies": [MovieID1, MovieID2]</span><br>
                                 }
                             </p>
                         </td>
@@ -90,11 +143,11 @@
                             structure like this:
                             <p>
                                 {<br>
-                                    <span class="indent">"name": "Anna Volker",</span><br>
-                                    <span class="indent">"dob": "19.08.2001",</span><br>
-                                    <span class="indent">"username": "username1",</span><br>
-                                    <span class="indent">"email": "annavoelker@mail.com",</span><br>
-                                    <span class="indent">"password": "qwert1234",</span><br>
+                                    <span class="indent">"Name": "Firstname Lastname",</span><br>
+                                    <span class="indent">"Username": "Username",</span><br>
+                                    <span class="indent">"Password": "Password",</span><br>
+                                    <span class="indent">"Email": "example@mail.com",</span><br>
+                                    <span class="indent">"Birthday": "YYYY-mm-dd",</span><br>
                                 }
                             </p>
 
@@ -102,24 +155,81 @@
                         <td>A JSON object holding data about the user that was added, including an ID: 
                             <p>
                                 {<br>
-                                    <span class="indent">"name": "Anna Volker",</span><br>
-                                    <span class="indent">"dob": "19.08.2001",</span><br>
-                                    <span class="indent">"username": "username1",</span><br>
-                                    <span class="indent">"email": "annavoelker@mail.com",</span><br>
-                                    <span class="indent">"password": "qwert1234",</span><br>
-                                    <span class="indent">"id": "0000wer-nju78-09lok",</span><br>
+                                    <span class="indent">"_id": objectId,</span><br>
+                                    <span class="indent">"Name": "Firstname Lastname",</span><br>
+                                    <span class="indent">"Username": "Username",</span><br>
+                                    <span class="indent">"Password": "Password",</span><br>
+                                    <span class="indent">"Email": "example@mail.com",</span><br>
+                                    <span class="indent">"Birthday": "YYYY-mm-dd",</span><br>
                                 }
                             </p>
                         </td>
                     </tr>
                     <tr>
-                        <td>Allow users to update user info by name</td>
-                        <td>/users/[Name]/[Username]</td>
+                        <td>Allow users to update user info by username</td>
+                        <td>/users/[Username]</td>
                         <td>PUT</td>
-                        <td>None</td>
-                        <td>A verification message that a new username was succesfully assigned or failed.</td>
+                        <td>A JSON object holding data about user info to update,<br>
+                            Example:<br>
+                            <p>
+                                {<br>
+                                    <span class="indent">"Email": "new.email-address@mail.com",</span>
+                                }
+                            </p>
+                        </td>
+                        <td>A JSON object holding data of a user info that is sucessfully updated,<br>
+                            Example:<br>
+                            <p>
+                                {<br>
+                                    <span class="indent">"_id": objectId,</span><br>
+                                    <span class="indent">"Name": "Firstname Lastname",</span><br>
+                                    <span class="indent">"Username": "Username",</span><br>
+                                    <span class="indent">"Password": "Password",</span><br>
+                                    <span class="indent">"Email": "new.email-address@mail.com",</span><br>
+                                    <span class="indent">"Birthday": "YYYY-mm-dd",</span><br>
+                                }
+                            </p>
+                        </td>
                     </tr>
-
+                    <tr>
+                        <td>Allow users to add a movie to favorite list</td>
+                        <td>/users/[Username]/movies/[MovieID]</td>
+                        <td>POST</td>
+                        <td>None
+                        </td>
+                        <td>A JSON object holding data of a user info that is sucessfully updated,<br>
+                            Example:<br>
+                            <p>
+                                {<br>
+                                    <span class="indent">"_id": objectId,</span><br>
+                                    <span class="indent">"Name": "Firstname Lastname",</span><br>
+                                    <span class="indent">"Username": "Username",</span><br>
+                                    <span class="indent">"Password": "Password",</span><br>
+                                    <span class="indent">"Email": "new.email-address@mail.com",</span><br>
+                                    <span class="indent">"Birthday": "YYYY-mm-dd",</span><br>
+                                    <span class="indent">"FavoritesMovies": [MovieID1]</span><br>
+                                }
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Allow users to remove a movie from favorite list</td>
+                        <td>/users/[Username]/movies/[MovieID]</td>
+                        <td>DELETE</td>
+                        <td>None
+                        </td>
+                        <td>A text message that indicating the movie was successfully removed from favorite list.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Allow users to de-register</td>
+                        <td>/users/[Username]</td>
+                        <td>DELETE</td>
+                        <td>None
+                        </td>
+                        <td>A text message that indicating the user was successfully de-registered.
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
