@@ -1,2 +1,2 @@
-# movie_API
+# Welcome to MooVieS! :3
  
