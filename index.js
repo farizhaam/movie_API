@@ -18,6 +18,9 @@ mongoose.connect('mongodb://localhost:27017/MooVieS_DB', {useNewUrlParser: true,
 //calling express
 const app = express();
 
+//activating morgan
+app.use(morgan('common'));
+
 //activating body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -27,8 +30,7 @@ let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
 
-//activating morgan
-app.use(morgan('common'));
+
 
 
 //Welcome page
