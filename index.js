@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
+const {check, validationResult} = require('express-validator');
+
 
 //importing models from models.js
 const mongoose = require('mongoose');
@@ -141,8 +143,22 @@ app.get('/users', passport.authenticate('jwt', {session:false}), (req, res) => {
 
 
 //Allow new users to register
-app.post('/users', passport.authenticate('jwt', {session:false}), (req,res) => {
+app.post('/users', 
+    [//validation for request
+        check('Username', 'Username is required').isLength({min: 5}),
+        check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+        check('Password', 'Password is required').not().isEmpty(),
+        check('Email', 'Email does not appeared to be valid.').isEmail()
+    ], passport.authenticate('jwt', {session:false}), (req,res) => {
     
+    //check the validation object for errors
+    let errors = validationResult(req);
+
+    if(!errors.isEmpty()) {
+        return res.status(422).json({errors: errors.array()});
+    }
+
+    //hashing the submitted password
     let hashedPassword = Users.hashPassword(req.body.Password);
     
     Users.findOne({Username: req.body.Username})//search to see if the username is already existed
