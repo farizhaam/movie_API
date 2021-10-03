@@ -15,7 +15,9 @@ const Genres = Models.Genre;
 const Directors = Models.Director;
 const Users = Models.User;
 
-mongoose.connect('mongodb://localhost:27017/MooVieS_DB', {useNewUrlParser: true, useUnifiedTopology: true});
+//connecting database with connction URI
+mongoose.connect('process.env.CONNECTION_URI', {useNewUrlParser: true, useUnifiedTopology: true});
+
 
 //calling express
 const app = express();
