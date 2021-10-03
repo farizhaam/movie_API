@@ -20,10 +20,17 @@ passport.use(new LocalStrategy({
                 return callback(error);
         }
 
+        //callback for incorrect username
         if (!user) {
             console.log('incorrect username');
             //response when the username is cannot be found
-            return callback(null, false, {message: 'Incorrect username or password.'});
+            return callback(null, false, {message: 'Incorrect username.'});
+        }
+
+        //callback for incorrect password
+        if (!user.validatePassword(password)) {
+            console.log('incorrect password');
+            return callback(null, false, {message: 'Incorrect password.'});
         }
 
         console.log('finished');
