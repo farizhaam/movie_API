@@ -16,7 +16,7 @@ const Directors = Models.Director;
 const Users = Models.User;
 
 //connecting database with connction URI
-mongoose.connect('process.env.CONNECTION_URI', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.CONNECTION_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 //calling express
