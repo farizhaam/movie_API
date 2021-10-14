@@ -192,7 +192,7 @@ app.get('/users/:Username', passport.authenticate('jwt', {session:false}), (req,
 });
 
 //Update the user's info of a user by username
-app.put('/users/:Username', passport.authenticate('jwt', {session:false}), (req, res) => {
+app.put('/users/:Username', (req, res) => {
     Users.findOneAndUpdate({Username: req.params.Username}, { $set://$set specifies the fields to be updated
         {
             Username: req.body.Username,
