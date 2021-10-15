@@ -180,7 +180,7 @@ app.post('/users',
 });
 
 // Get a user by username
-app.get('/users/:Username', passport.authenticate('jwt', {session:false}), (req, res) => {
+app.get('/users/:Username', (req, res) => {
     Users.findOne({Username: req.params.Username})
         .then((user) => {
             res.json(user);
@@ -212,7 +212,7 @@ app.put('/users/:Username', (req, res) => {
 });
 
 //Allows users to add a movie to favorite list
-app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session:false}), (req,res) => {
+app.post('/users/:Username/movies/:MovieID',(req,res) => {
     Users.findOneAndUpdate({Username: req.params.Username}, {
         $push: {FavoriteMovies: req.params.MovieID}//$push adds a new movie ID to the FavoriteMovies array
     },
