@@ -17,7 +17,7 @@ passport.use(new LocalStrategy({
     Users.findOne({Username: username}, (error, user) => {
         if(error) {
             console.log(error);
-                return callback(error);
+            return callback(error);
         }
 
         //callback for incorrect username
