@@ -25,13 +25,13 @@ const app = express();
 //activating morgan
 app.use(morgan('common'));
 
-//activating body-parser
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-
 //including CORS that allows all domain
 const cors = require('cors');
 app.use(cors());
+
+//activating body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 //including passport for authentication
 let auth = require('./auth')(app);
