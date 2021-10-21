@@ -27,7 +27,7 @@ app.use(morgan('common'));
 
 //including CORS that allows all domain
 const cors = require('cors');
-app.use(cors());
+app.options('*', cors());
 
 //to parse express
 app.use(express.json());
