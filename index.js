@@ -29,9 +29,9 @@ app.use(morgan('common'));
 const cors = require('cors');
 app.use(cors());
 
-//activating body-parser
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+//to parse express
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 //including passport for authentication
 let auth = require('./auth')(app);
