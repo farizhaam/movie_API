@@ -148,7 +148,7 @@ app.post('/users',
     }
 
     //hashing the submitted password
-    // let hashedPassword = Users.hashPassword(req.body.Password);
+    let hashedPassword = Users.hashPassword(req.body.Password);
     
     Users.findOne({Username: req.body.Username})//search to see if the username is already existed
     .then((user) => {
@@ -160,7 +160,7 @@ app.post('/users',
             .create({
                 Name: req.body.Name,
                 Username : req.body.Username,
-                Password: req.body.Password,//using hashed password for the passowrd field
+                Password: hashedPassword,//using hashed password for the passowrd field
                 Email: req.body.Email,
                 Birthday: req.body.Birthday
             })//response back to client letting them know that it has been completed
