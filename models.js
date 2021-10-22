@@ -45,15 +45,15 @@ let userSchema = mongoose.Schema({
 });
 
 //adding hashPassword function for hashing submitted password
-userSchema.statics.hashPassword = (password) => {
-    return bcrypt.hashSync(password, 10);
-};
+// userSchema.statics.hashPassword = (password) => {
+//     return bcrypt.hashSync(password, 10);
+// };
 
 //adding validatePassword for comparing submitted hashed password with the hashed password in database
 /*!!! DO NOT USE ARROW FUNCTION FOR DEFINING INSTANCE METHODS, e.g: validatePassword !!!*/
-userSchema.methods.validatePassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-};
+// userSchema.methods.validatePassword = function(password) {
+//     return bcrypt.compareSync(password, this.password);
+// };
 
 let Movie = mongoose.model('Movie', movieSchema);
 let Genre = mongoose.model('Genre', genreSchema);
