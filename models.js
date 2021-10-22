@@ -1,6 +1,6 @@
 //requiring mongoose
-const mongoose = require('mongoose'),
-    bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
+    // bcrypt = require('bcrypt');
 
 
 //creating movieSchema
