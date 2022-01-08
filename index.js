@@ -211,6 +211,24 @@ app.put('/users/:Username', (req, res) => {
     });
 });
 
+//Gets the list of user's favorite movies
+app.get('/users/:Username/movies', passport.authenticate('jwt', {session:false}), (req, res) => {
+    Users.findOne({Username: req.params.Username})
+    // let user = Users.find( (user) =>{ return user.Username === req.params.name });
+
+    // if(user){
+    //     let favmovies = Object.values(user.FavoriteMovies);
+    // }
+    .then((users) => {
+        let favMovies = Object.values(users.FavoriteMovies);
+        res.status(201).json(favMovies);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
+});
+
 //Allows users to add a movie to favorite list
 app.post('/users/:Username/movies/:MovieID',(req,res) => {
     Users.findOneAndUpdate({Username: req.params.Username}, {
